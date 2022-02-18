@@ -170,16 +170,38 @@ public class MovieCollection
         String names="";
         ArrayList<String> ca = new ArrayList<String>();
         for (int i = 0 ; i<movies.size();i++){
-            str+=movies.get(i).getCast();
+            while (movies.get(i).getCast().indexOf("|")!=-1){
+                int in = movies.get(i).getCast().indexOf("|");
+                ca.add(movies.get(i).getCast().substring(0,in));
+            }
+            /*str=movies.get(i).getCast();
             while (str.indexOf("|")!=-1) {
                 int in = str.indexOf("|");
                 if (names.indexOf(str.substring(0,in))==-1) {
                 ca.add(str.substring(0,in));
                 names+=str.substring(0,in);
-                str=str.substring(in+1); }
-            }
+                str=str.substring(in+1);
+            } }
             ca.add(str);
+            System.out.println(ca);*/
         }
+        /*ArrayList<Movie> results = new ArrayList<Movie>();
+        for (int i = 0; i<ca.size();i++){
+            if (ca.get(i).indexOf(name)!=0) {
+                results.add(movies.get(i));
+            }
+        }
+        sortResults(results);
+        // now, display them all to the user
+        for (int i = 0; i < results.size(); i++)
+        {
+            String title = results.get(i).getTitle();
+
+            // this will print index 0 as choice 1 in the results list; better for user!
+            int choiceNum = i + 1;
+
+            System.out.println("" + choiceNum + ". " + title);
+        }*/
     }
 
     private void searchKeywords()
@@ -212,7 +234,7 @@ public class MovieCollection
         // now, display them all to the user
         for (int i = 0; i < results.size(); i++)
         {
-            String words = results.get(i).getKeywords();
+            String words = results.get(i).getTitle();
 
             // this will print index 0 as choice 1 in the results list; better for user!
             int choiceNum = i + 1;
