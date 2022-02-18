@@ -166,14 +166,16 @@ public class MovieCollection
     {
         System.out.print("Enter a name: ");
         String name = scanner.nextLine();
+        String names= "";
         String str="";
-        String names="";
         ArrayList<String> ca = new ArrayList<String>();
         for (int i = 0 ; i<movies.size();i++){
-            while (movies.get(i).getCast().indexOf("|")!=-1){
-                int in = movies.get(i).getCast().indexOf("|");
+            
+            int in = movies.get(i).getCast().indexOf("|");
+            while (movies.get(i).getCast().indexOf("|")!=-1&&names.indexOf(movies.get(i).getCast().substring(0,in))==-1){
                 ca.add(movies.get(i).getCast().substring(0,in));
             }
+            System.out.println(ca);
             /*str=movies.get(i).getCast();
             while (str.indexOf("|")!=-1) {
                 int in = str.indexOf("|");
